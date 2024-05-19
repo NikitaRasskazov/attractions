@@ -107,15 +107,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# для удаленного подключения vuejs к серверному API
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:8080',
-    'http://localhost:8081',
-    'http://localhost:8082',
-    'http://localhost:8083',
-    'http://localhost:8084',
-    'http://localhost:8085',
-]
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_URLS_REGEX = r'^/backend/.*$'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
