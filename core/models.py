@@ -6,6 +6,7 @@ class Attractions(models.Model):
     description = models.TextField('описание', blank=True)
     latitude = models.DecimalField('широта', max_digits=10, decimal_places=7, null=True, blank=True)
     longitude = models.DecimalField('долгота', max_digits=10, decimal_places=7, null=True, blank=True)
+    category = models.CharField('категории', max_length=255, blank=True, null=True)
 
     class Meta:
         verbose_name = 'достопримечательность'

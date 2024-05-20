@@ -6,11 +6,13 @@ from core import models
 
 class AttractionsFilter(django_filters.FilterSet):
     search = django_filters.CharFilter(method='filter_search')
+    category = django_filters.CharFilter(lookup_expr='icontains')
     order_by = django_filters.OrderingFilter(
         fields=(
             'id',
             'name',
-            'description'
+            'description',
+            'category',
         )
     )
 
@@ -20,6 +22,7 @@ class AttractionsFilter(django_filters.FilterSet):
             'id',
             'name',
             'description',
+            'category',
             'order_by',
         ]
 
@@ -31,5 +34,6 @@ class AttractionsFilter(django_filters.FilterSet):
     ) -> QuerySet:
         return queryset.filter(
             Q(name__icontains=value) |
-            Q(description__icontains=value)
+            Q(description__icontains=value) |
+            Q(category__icontains=value)
         )
