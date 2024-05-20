@@ -4,12 +4,8 @@ from django.db import models
 class Attractions(models.Model):
     name = models.CharField('название', max_length=255)
     description = models.TextField('описание', blank=True)
-    coords = models.JSONField(
-        'координаты',
-        blank=True,
-        null=True,
-        default={},
-    )
+    latitude = models.DecimalField('широта', max_digits=10, decimal_places=7, null=True, blank=True)
+    longitude = models.DecimalField('долгота', max_digits=10, decimal_places=7, null=True, blank=True)
 
     class Meta:
         verbose_name = 'достопримечательность'
