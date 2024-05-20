@@ -8,7 +8,7 @@ class AttractionsPreview(serializers.ModelSerializer):
 
     class Meta:
         model = models.Attractions
-        fields = ('name', 'image')
+        fields = ('name', 'image', 'latitude', 'longitude')
 
     def get_image(self, obj: models.Attractions):
         first_image = obj.attraction_images.first()
@@ -29,4 +29,4 @@ class AttractionRead(serializers.ModelSerializer):
 
     class Meta:
         model = models.Attractions
-        fields = ('name', 'description', 'image')
+        fields = ('name', 'description', 'image', 'latitude', 'longitude')
