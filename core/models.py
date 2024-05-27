@@ -6,7 +6,14 @@ class Attractions(models.Model):
     description = models.TextField('описание', blank=True)
     latitude = models.DecimalField('широта', max_digits=10, decimal_places=7, null=True, blank=True)
     longitude = models.DecimalField('долгота', max_digits=10, decimal_places=7, null=True, blank=True)
-    category = models.CharField('категории', max_length=255, blank=True, null=True)
+    categories = models.ForeignKey(
+        'Category',
+        verbose_name='категории',
+        related_name='attractions',
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
+    )
 
     class Meta:
         verbose_name = 'достопримечательность'
@@ -33,3 +40,14 @@ class AttractionImage(models.Model):
     class Meta:
         verbose_name = 'картинка достопримечательности'
         verbose_name_plural = 'картинки достопримечательностей'
+
+
+class Category(models.Model):
+    name = models.CharField('название', max_length=255)
+
+    class Meta:
+        verbose_name = 'категория'
+        verbose_name_plural = 'категории'
+
+    def __str__(self):
+        return self.name

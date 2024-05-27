@@ -13,3 +13,9 @@ class Attractions(ReadOnlyModelViewSet):
             return serializers.AttractionsPreview
         if self.action == 'retrieve':
             return serializers.AttractionRead
+
+
+class Category(ReadOnlyModelViewSet):
+    """Категории"""
+    queryset = models.Category.objects.all()
+    serializer_class = serializers.Category

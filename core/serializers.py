@@ -5,10 +5,11 @@ from core import models
 
 class AttractionsPreview(serializers.ModelSerializer):
     image = serializers.SerializerMethodField()
+    categories = serializers.StringRelatedField()
 
     class Meta:
         model = models.Attractions
-        fields = ('id', 'name', 'image', 'latitude', 'longitude', 'category')
+        fields = ('id', 'name', 'image', 'latitude', 'longitude', 'categories')
 
     def get_image(self, obj: models.Attractions):
         first_image = obj.attraction_images.first()
@@ -29,4 +30,10 @@ class AttractionRead(serializers.ModelSerializer):
 
     class Meta:
         model = models.Attractions
-        fields = ('id', 'name', 'description', 'image', 'latitude', 'longitude', 'category')
+        fields = ('id', 'name', 'description', 'image', 'latitude', 'longitude', 'categories')
+
+
+class Category(serializers.ModelSerializer):
+    class Meta:
+        model = models.Category
+        fields = '__all__'
