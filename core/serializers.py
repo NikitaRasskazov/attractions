@@ -37,3 +37,7 @@ class Category(serializers.ModelSerializer):
     class Meta:
         model = models.Category
         fields = '__all__'
+
+
+class Castom(serializers.Serializer):
+    file = serializers.FileField()

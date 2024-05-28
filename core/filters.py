@@ -30,7 +30,7 @@ class AttractionsFilter(django_filters.FilterSet):
         return queryset.filter(
             Q(name__icontains=value) |
             Q(description__icontains=value) |
-            Q(category__icontains=value)
+            Q(categories__name__icontains=value)
         )
 
     def filter_category(self, queryset: QuerySet, name: str, value: str) -> QuerySet:
